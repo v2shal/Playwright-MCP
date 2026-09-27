@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build Image') {
             steps {
-                sh 'echo "Building project..."'
-                sh 'mvn test'
+                sh 'podman build -t localhost/playwright-tests:${BUILD_NUMBER} .'
             }
         }
     }
